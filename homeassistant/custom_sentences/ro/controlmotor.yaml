@@ -1,0 +1,13 @@
+language: "ro"
+intents:
+  PornesteMotor:
+    data:
+      - sentences:
+          - "pornește motorul inainte"
+          - "dă drumul la motor inainte"
+          - "activează motorul inainte"
+        response: "Motorul a fost pornit inainte."
+        action:
+          service: switch.turn_on
+          target:
+            entity_id: switch.motor_inainte

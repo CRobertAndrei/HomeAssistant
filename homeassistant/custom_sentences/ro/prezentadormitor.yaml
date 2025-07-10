@@ -1,0 +1,6 @@
+language: "ro"
+intents:
+  PrezentaDormitor:
+    data:
+      - sentences:
+          - "Este cineva în dormitor"

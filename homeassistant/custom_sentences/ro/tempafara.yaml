@@ -1,0 +1,7 @@
+language: "ro"
+intents:
+  CustomOutsideTemperature:
+    data:
+      - sentences:
+          - "Câte grade sunt afară"
+          - "Care este temperatura de afară"

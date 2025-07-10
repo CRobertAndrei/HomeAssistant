@@ -1,0 +1,8 @@
+language: "ro"
+intents:
+  CautaTemperaturaDormitor:
+    data:
+      - sentences:
+          - "Câte grade sunt în dormitor"
+          - "Care este temperatura în dormitor"
+          - "Spune-mi temperatura din dormitor"

@@ -1,0 +1,64 @@
+rest_command:
+  send_to_n8n:
+    url: "http://homeassistant:8081/webhook/temperature-alert"
+    method: POST
+    content_type: "application/json"
+    payload: >
+      {
+        "temperature": "{{ states('sensor.temperature_and_humidity_sensor_temperatura') }}",
+        "time": "{{ now().isoformat() }}"
+      }
+
+timer:
+  motor_timer:
+    duration: "00:00:05"
+
+switch:
+  - platform: rpi_gpio
+    switches:
+      - port: 17
+        name: "Motor Inainte"
+      - port: 27
+        name: "Motor Inapoi"
+
+environment_variable:
+  OPENAI_API_BASE: "https://api.deepseek.com/v1"
+
+intent_script:
+  CustomOutsideTemperature:
+    speech:
+     text: >
+        Temperatura este {{ state_attr('weather.forecast_home', 'temperature') | string | replace('.', ',') }} grade afară.
+  CautaTemperaturaDormitor:
+    speech:
+      text: >
+        Temperatura în dormitor este de {{ states('sensor.temperature_and_humidity_sensor_temperatura') | string | replace('.', ',') }} grade.
+  UmiditateDormitor:
+    speech:
+     text: >
+        Umiditatea din dormitor este de {{ states('sensor.temperature_and_humidity_sensor_umiditate') }}%.
+  PrezentaDormitor:
+    speech:
+      text: >
+        {% if states('binary_sensor.presence_sensor_fp2_fc03_presence_sensor_1') == 'on' %}
+          Da, este cineva în dormitor.
+        {% else %}
+          Nu, nu este nimeni în dormitor.
+        {% endif %}
+
+logger:
+  default: info
+
+wake_on_lan:
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+

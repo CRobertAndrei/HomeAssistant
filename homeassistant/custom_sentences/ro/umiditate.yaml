@@ -1,0 +1,6 @@
+language: "ro"
+intents:
+  UmiditateDormitor:
+    data:
+      - sentences:
+          - "Ce umiditate e în dormitor"

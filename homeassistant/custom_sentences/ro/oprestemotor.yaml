@@ -1,0 +1,24 @@
+language: "ro"
+intents:
+  OpresteMotorInainte:
+    data:
+      - sentences:
+          - "oprește motorul inainte"
+          - "dă drumul la motor inainte să se oprească"
+          - "oprire motor inainte"
+        response: "Motorul înainte a fost oprit."
+        action:
+          service: switch.turn_off
+          target:
+            entity_id: switch.motor_inainte
+  OpresteMotorInapoi:
+    data:
+      - sentences:
+          - "oprește motorul inapoi"
+          - "dă drumul la motor inapoi să se oprească"
+          - "oprire motor inapoi"
+        response: "Motorul inapoi a fost oprit."
+        action:
+          service: switch.turn_off
+          target:
+            entity_id: switch.motor_inapoi

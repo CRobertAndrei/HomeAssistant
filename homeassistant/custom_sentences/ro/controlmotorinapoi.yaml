@@ -1,0 +1,13 @@
+language: "ro"
+intents:
+  PornesteMotorInapoi:
+    data:
+      - sentences:
+          - "pornește motorul inapoi"
+          - "dă drumul la motor inapoi"
+          - "activează motorul inainte"
+        response: "Motorul a fost pornit inapoi."
+        action:
+          service: switch.turn_on
+          target:
+            entity_id: switch.motor_inapoi
